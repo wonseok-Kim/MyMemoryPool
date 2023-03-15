@@ -9,17 +9,10 @@ class __CheckCode
 {
 protected:
 	static uint32_t NextCheckCode() { return s_nextCheckCode++; }
-
+	
 private:
 	inline static uint32_t s_nextCheckCode = 0xcccccccc;
 };
-
-//inline uint32_t NextCheckCode()
-//{
-//	static uint32_t nextCheckCode = 0xcccccccc;
-//
-//	return nextCheckCode++;
-//}
 
 template <typename T>
 class MemoryPool : public __CheckCode
@@ -58,6 +51,9 @@ public:
 
 			m_pFreeNode = m_pFreeNode->Next;			
 			
+			if (!m_bNeedToCallConstructorDestructorEveryTime)
+				toDelete->Data.~T();
+
 #ifdef _SAFEPOOL
 			delete[]((uint8_t*)toDelete - sizeof(uintptr_t));
 #else

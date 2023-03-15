@@ -8,4 +8,6 @@ void TestFunc()
 
 
 	double* pDouble1 = doublePool3.Alloc();
+
+	doublePool3.Free(pDouble1);
 }

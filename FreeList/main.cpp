@@ -34,41 +34,6 @@ private:
 
 int main()
 {	
-	//MemoryPool<Star> starPool1(0);
-	//std::list<Star*> starList;
-	//
-	//Star* a = new Star;
-
-	//while (true)
-	//{
-	//	int alloc;
-	//	scanf_s("%d", &alloc);
-
-	//	for (int i = 0; i < alloc; ++i)
-	//	{
-	//		Star* pStar = starPool1.Alloc();
-	//		pStar->X = rand() % 50;
-	//		pStar->Y = rand() % 50;
-
-	//		printf("Star Created %d, %d\n", pStar->X, pStar->Y);
-	//		starList.push_back(pStar);
-	//	}
-
-	//	int free;
-	//	scanf_s("%d", &free);
-
-	//	for (int i = 0; i < free; ++i)
-	//	{
-	//		Star* pStar = starList.back();
-	//		starList.pop_back();
-
-	//		printf("Star Freed %d, %d\n", pStar->X, pStar->Y);
-	//		starPool1.Free(pStar);
-	//	}
-
-	//	printf("StarPool AllocCount: %d, UsageCount: %d\n", starPool1.GetAllocCount(), starPool1.GetUsageCount());
-	//}
-
 	MemoryPool<Star> starPool1(2);
 	MemoryPool<Star> starPool2(1);
 
@@ -88,6 +53,11 @@ int main()
 	starPool1.Free(pStar2);
 	starPool1.Free(pStar3);
 	starPool1.Free(pStar4);
+	
+	starPool1.Free(pStar5);
+
+	starPool2.Free(pStar6);
+	starPool2.Free(pStar7);
 
 	//starPool2.Free(pStar5);
 
